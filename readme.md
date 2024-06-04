@@ -1,5 +1,5 @@
 # This is my Login Credentials 
-# For Admin \
+# For Admin 
 "email\":\"akgupta3507@gmail.com\", \"password\": \"Amit@1234\" 
 # For User
 \"email\": \"amit.kumar.cse24@heritageit.edu.in\", \"password\":

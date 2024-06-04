@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 400px; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    text-align: center;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 20px 20px 60px #7a00454e,inset -20px -20px 60px rgba(255, 255, 255, 0.233);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="tel"] ,
+input[type="number"],
+input[type="text"]
+{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9E0059;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #7A0045;
+}
+a{
+    text-decoration: none;
+    color: #7A0045;
+}
+span{
+    color: red;
+}

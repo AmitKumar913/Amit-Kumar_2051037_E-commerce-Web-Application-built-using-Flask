@@ -1,0 +1,18 @@
+[
+    {
+        "tag": 1,
+        "name": "Admin Gupta",
+        "email": "akgupta3507@gmail.com",
+        "password": "Amit@1234",
+        "number": "7992408046",
+        "profile_image": "static/profile_img/default.png"
+    },
+    {
+        "tag": 0,
+        "name": "User Gupta",
+        "email": "amit.kumar.cse24@heritageit.edu.in",
+        "password": "Amit@12345",
+        "number": "7992408046",
+        "profile_image": "static/profile_img/40ccd32b-5244-4f2b-b3e7-231fc7110186.gif"
+    }
+]

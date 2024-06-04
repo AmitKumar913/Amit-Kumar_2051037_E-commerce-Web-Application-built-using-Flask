@@ -1,0 +1,48 @@
+[
+    {
+        "email": "diya13@gmail.com",
+        "items": {
+            "1": 3,
+            "3": 2,
+            "9": 1
+        },
+        "total": 6
+    },
+    {
+        "email": "amit.kumar.cse24@heritageit.edu.in",
+        "items": {
+            "74": 1,
+            "85": 1,
+            "93": 2,
+            "56": 3,
+            "1": 1
+        },
+        "total": 8
+    },
+    {
+        "email": "devgupta.cse@gmail.com",
+        "items": {
+            "1": 5,
+            "18": 1,
+            "28": 1
+        },
+        "total": 7
+    },
+    {
+        "email": "utkarsh.kumarsinha.cse24@heritageit.edu.in",
+        "items": {
+            "1": 2,
+            "2": 1,
+            "3": 2
+        },
+        "total": 5
+    },
+    {
+        "email": "kumarnandlal281@gmail.com",
+        "items": {
+            "1": 1,
+            "2": 2
+        },
+        "total": 3
+    }
+]

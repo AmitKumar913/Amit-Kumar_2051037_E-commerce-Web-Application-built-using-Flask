@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <title>OTP Verification</title>
+    <style>
+        body {
+    height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <span>{{msg}}</span>
+        <h1>OTP Verification</h1>
+        <form action="/sms_verify" method="POST">
+            <div class="form-group">
+                <label for="otp">Enter OTP:</label>
+                <input type="number" id="otp" name="otp" required>
+            </div>
+            <button type="submit" class="btn">Verify</button>
+        </form>
+        <div>
+            <a href="/sms_generator" type="button">Resend OTP</a>
+        </div>
+        <p><span>Note:</span> Please check your Phone for the OTP.</p>
+        <!-- Display the countdown timer -->
+        <p>Time left: <span id="countdown">60</span> seconds</p>
+        <p id="timer"></p>
+    </div>
+    <script>
+        // Set the countdown timer
+        var timeLeft = 60; // 60 seconds for OTP expiration
+        var countdownTimer = setInterval(function() {
+            timeLeft--;
+            document.getElementById('countdown').textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('timer').textContent = "OTP has expired!";
+                document.getElementById('countdown').textContent = "";
+                // Disable form submission
+                document.querySelector('form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert("OTP has expired! Please request a new OTP.");
+                });
+            }
+        }, 1000); // Update every second
+    </script>
+    
+    <!-- <script>
+        // Set the countdown timer
+        var timeLeft = 60; // 60 seconds for OTP expiration
+        var countdownTimer = setInterval(function() {
+            timeLeft--;
+            document.getElementById('countdown').textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('timer').textContent = "OTP has expired!";
+                document.getElementById('countdown').textContent = "";
+            }
+        }, 1000); // Update every second
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <style>
+        body {
+    height: 100vh;
+        }
+    </style>
+</head> 
+<body>
+
+<div class="container">
+    <h1>Login</h1>
+    <span>{{myMsg}}</span>
+    <form action="/sms_otp" method="POST">
+        <!-- <div class="form-group">
+            <label for="number">Mobile No.</label>
+            <input type="tel" id="number" name="number" placeholder="Enter your Mobile number" required>
+        </div> -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <a href="/register" class="btn">Register</a>
+        
+        <div>
+            <b><a href="/" >Login via Email</a></b>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .filter-container {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        .filter-section h3 {
+            margin-bottom: 10px;
+        }
+        .filter-section .filter-item {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="filter-container">
+        <div class="filter-section">
+            <h3>Color</h3>
+            <div class="filter-item"><input type="checkbox" id="color1" name="color" value="Navy Blue"> <label for="color1">Navy Blue</label></div>
+            <div class="filter-item"><input type="checkbox" id="color2" name="color" value="Black"> <label for="color2">Black</label></div>
+            <div class="filter-item"><input type="checkbox" id="color3" name="color" value="Blue"> <label for="color3">Blue</label></div>
+            <div class="filter-item"><input type="checkbox" id="color4" name="color" value="White"> <label for="color4">White</label></div>
+            <div class="filter-item"><input type="checkbox" id="color5" name="color" value="Red"> <label for="color5">Red</label></div>
+            <div class="filter-item"><input type="checkbox" id="color6" name="color" value="Yellow"> <label for="color6">Yellow</label></div>
+            <div class="filter-item"><input type="checkbox" id="color7" name="color" value="Green"> <label for="color7">Green</label></div>
+        </div>
+        <div class="filter-section">
+            <h3>Size</h3>
+            <div class="filter-item"><input type="checkbox" id="size1" name="size" value="S"> <label for="size1">S</label></div>
+            <div class="filter-item"><input type="checkbox" id="size2" name="size" value="M"> <label for="size2">M</label></div>
+            <div class="filter-item"><input type="checkbox" id="size3" name="size" value="L"> <label for="size3">L</label></div>
+            <div class="filter-item"><input type="checkbox" id="size4" name="size" value="XL"> <label for="size4">XL</label></div>
+            <div class="filter-item"><input type="checkbox" id="size5" name="size" value="XXL"> <label for="size5">XXL</label></div>
+        </div>
+        <div class="filter-section">
+            <h3>Price</h3>
+            <div class="filter-item"><input type="checkbox" id="price1" name="price" value="0-499"> <label for="price1">Rs. 0 to Rs. 499</label></div>
+            <div class="filter-item"><input type="checkbox" id="price2" name="price" value="500-999"> <label for="price2">Rs. 500 to Rs. 999</label></div>
+            <div class="filter-item"><input type="checkbox" id="price3" name="price" value="1000-1999"> <label for="price3">Rs. 1000 to Rs. 1999</label></div>
+            <div class="filter-item"><input type="checkbox" id="price4" name="price" value="2000-2999"> <label for="price4">Rs. 2000 to Rs. 2999</label></div>
+            <div class="filter-item"><input type="checkbox" id="price5" name="price" value="3000+"> <label for="price5">Rs. 3000 and above</label></div>
+        </div>
+        <button type="button" onclick="applyFilters()">Apply Filters</button>
+        <button type="button" onclick="clearFilters()">Clear Filters</button>
+    </div>
+
+    <script>
+        function applyFilters() {
+            const selectedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(checkbox => checkbox.value);
+            const selectedSizes = Array.from(document.querySelectorAll('input[name="size"]:checked')).map(checkbox => checkbox.value);
+            const selectedPrices = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(checkbox => checkbox.value);
+
+            console.log('Selected Colors:', selectedColors);
+            console.log('Selected Sizes:', selectedSizes);
+            console.log('Selected Prices:', selectedPrices);
+
+            // Make AJAX request to apply_filters route
+            fetch('/apply_filters', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    colors: selectedColors,
+                    sizes: selectedSizes,
+                    prices: selectedPrices
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Filtered Data:', data);
+                // Update your UI with the filtered data
+                // For now, you can log the filtered data
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function clearFilters() {
+            // Uncheck all checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            // Apply filters again (to reset console log)
+            applyFilters();
+        }
+    </script>
+</body>
+</html>

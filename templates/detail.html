@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='detail.css') }}">
+
+</head>
+<body>
+<div class="container">
+    <div class="left">
+        <table>
+            <tr>
+                <th><h3>Product Details</h3></th>
+            </tr>
+            <tr>
+                <td>Product_name : <span id="product_name">{{ existing_data['product_name']}}</span></td>
+            </tr>
+            <tr>
+                <td>Product_number : <span id="product_number">{{ existing_data['product_number'] }}</span></td>
+            </tr>
+            <tr>
+                <td>Color : <span id="color">{{ existing_data['color']}}</span></td>
+            </tr>
+            <tr>
+                <td>Size : <span id="size">{{ existing_data['size'] }}</span></td>
+            </tr>
+            <tr>
+                <td>Price : <span id="price">{{ existing_data['price']}}</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="right">
+        <img src="{{existing_data['image']}}" alt="Product Image">
+    </div>
+</div>
+</body>
+</html>

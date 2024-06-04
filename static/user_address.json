@@ -1,0 +1,36 @@
+[
+    {
+        "amit.kumar.cse24@heritageit.edu.in": [
+            {
+                "id": "081267dc-56e2-405f-a51c-b2d7ac3cb94c",
+                "country": "India",
+                "pincode": "700109",
+                "address1": "358, Pushpanjali apartment",
+                "address2": "Patuli",
+                "landmark": "Palki Bar",
+                "city": "24 Paraganas North",
+                "state": "West Bengal"
+            },
+            {
+                "id": "967ecff7-924e-4334-8daa-8f2a1a28209f",
+                "country": "India",
+                "pincode": "700025",
+                "address1": "13",
+                "address2": "Allenby Road",
+                "landmark": " ",
+                "city": "Kolkata",
+                "state": "West Bengal"
+            },
+            {
+                "id": "603dab47-b38a-4c29-948b-f31bea2e8cbf",
+                "country": "India",
+                "pincode": "700025",
+                "address1": "13/37",
+                "address2": "Allenby Road",
+                "landmark": " ",
+                "city": "Kolkata",
+                "state": "West Bengal"
+            }
+        ]
+    }
+]

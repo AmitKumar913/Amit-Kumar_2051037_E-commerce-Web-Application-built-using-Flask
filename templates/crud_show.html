@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='popup.css') }}">
+    <title>CRUD operation</title>
+    <style>
+      .btn-group {
+    display: flex;
+    }
+
+    #btn {
+        flex: 1;
+        margin: 0 5px;
+    }
+    
+    </style>
+  </head>
+  <body>
+        <!-- NavBAR -->
+        <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><b>{{name}}</b> </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+            <a href="/logout" type="button"  class="btn btn-outline-dark  ">Logout</a>
+          </nav>
+
+          <div class="container my-2">
+            <h1>Your Operations</h1>
+            <div class="btn-group">
+                <a href="/show_data" type="button" class="btn btn-outline-dark me-2" id="btn">Show Data</a>
+                <!-- <a href="/filter" type="button" class="btn btn-outline-dark" id="btn">Filter Data</a> -->
+                <a href="#" type="button" class="btn btn-outline-dark me-2" id="btn" data-bs-toggle="modal" data-bs-target="#filterModal">Filter Data </a>
+
+                <a href="/add_data" type="button" class="btn btn-outline-dark me-2" id="btn">Add Data</a>
+                <!-- <a href="/update_data" type="button" class="btn btn-outline-dark" id="btn">Update Data</a> -->
+                <button id="openUpdateModalBtn" class="btn btn-outline-dark me-2">Update</button>
+                <!-- <a href="/delete_data" type="button" class="btn btn-outline-dark" id="btn">Delete Data</a> -->
+                <button id="openDeleteModalBtn" class="btn btn-outline-dark me-2">Delete</button>
+            </div>
+        </div>
+        <Br></Br>
+
+
+        <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="filterModalLabel">Enter Limits</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="/filter" method="POST">
+                    <div class="form-group">
+                        <label for="lowerLimit">Lower Limit:</label>
+                        <input type="number" id="lowerLimit" name="lowerLimit">
+                    </div>
+                    <div class="form-group">
+                        <label for="upperLimit">Upper Limit:</label>
+                        <input type="number" id="upperLimit" name="upperLimit">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Apply</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Update Modal -->
+      <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Enter ID to Update</h2>
+            <form id="updateForm" action="/update_data" method="GET">
+                <div class="form-group">
+                    <label for="updateId" class="form-label">ID</label>
+                    <input type="number" class="form-control" id="updateId" name="id" required>
+                </div>
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Enter ID to Delete</h2>
+            <form id="deleteForm" action="/delete_data" method="GET">
+                <div class="form-group">
+                    <label for="deleteId" class="form-label">ID</label>
+                    <input type="number" class="form-control" id="deleteId" name="id" required>
+                </div>
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+      <div class="container mb-2">
+        <h3>{{myMsg}} </h3>
+        <H4>Your Result</H4>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                    <th scope="col">Product_name</th>
+                    <th scope="col">Product_number</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% for row in new_entry %}
+                <tr>
+                  <td scope="row">{{ row["id"] }}</td>
+                  <td><a href="/detail/{{row['id']}}" target="_blank">{{ row['product_name'] }}</a></td>
+                    <td>{{ row['product_number'] }}</td> 
+                    <td>{{ row['color'] }}</td>
+                    <td>{{ row['size'] }}</td>
+                    <td>{{ row['price'] }}</td>
+                
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+      </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+  
+        
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="{{ url_for('static', filename='popup.js') }}"></script>
+
+
+
+</body>
+</html>

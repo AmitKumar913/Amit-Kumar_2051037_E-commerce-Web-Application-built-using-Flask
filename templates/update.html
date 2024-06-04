@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 400px; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    text-align: center;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="re_password"] ,
+input[type="number"],
+input[type="text"]
+{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+a{
+    text-decoration: none;
+    
+}
+span{
+    color: red;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Update the Data</h2>
+        <form action="/update_data" method="post">
+            <div class="form-group">
+                <label for="product_name" class="form-label">Product Name</label>
+                <input type="text" class="form-control" id="product_name" value="{{new_entry['product_name']}}" name="product_name"  required>
+            </div>
+            <div class="form-group">
+                <label for="product_number" class="form-label">Product Number</label>
+                <input type="number" class="form-control" id="product_number" name="product_number" value="{{new_entry['product_number']}}" required>
+            </div>
+            <div class="form-group">
+                <label for="color" class="form-label">Color</label>
+                <input type="text" class="form-control" id="color" name="color" value="{{new_entry['color']}}" required>
+            </div>
+            <div class="form-group">
+                <label for="size" class="form-label">Size</label>
+                <input type="text" class="form-control" id="size" name="size" value="{{new_entry['size']}}" required>
+            </div>
+            <div class="form-group">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" class="form-control" id="price" name="price" value="{{new_entry['price']}}" required>
+            </div>
+            <input type="hidden" name="id" value="{{ new_entry['id'] }}">
+
+            <button type="submit" class="btn btn-dark">Submit</button>
+            <!-- <a href="/show_data" type="button"  class="btn btn-outline-dark">Show All</a> -->
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
